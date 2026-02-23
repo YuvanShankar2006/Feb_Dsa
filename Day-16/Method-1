@@ -1,0 +1,28 @@
+class Solution {
+    public double myPow(double x, int n) {
+        long val=n;
+        if(n<0){
+            System.out.print(val);
+            return 1/recursion(x,(val*-1));
+        }
+        else{
+            return recursion(x,val);
+        }
+    }
+    public double recursion(double x, long n){
+        if(n==1){
+            return x;
+        }
+        else if(n%2==0 && n!=0){
+            double val=recursion(x,n/2);
+            return val*val; 
+        }
+        else if(n%2==1){
+            double val=recursion(x,n/2);
+            return x*val*val;
+        }  
+        else{
+            return 1;
+        }
+    }
+}
