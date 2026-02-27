@@ -1,0 +1,28 @@
+class Solution {
+    public int longestMountain(int[] arr) {
+        int n=arr.length;
+        int length=0;
+        for(int i=1;i<n-1;i++){
+            if(arr[i-1]<arr[i] && arr[i]>arr[i+1]){
+                int left=findlenleft(i,arr,1,n);
+                int right=findlenright(i,arr,0,n);
+                System.out.print(left+" ");
+                System.out.print(right);
+                length=Math.max(length,left+right);
+            }
+        }
+        return length;
+    }
+    public int findlenleft(int pos,int[]arr,int len,int n){
+        if(pos==0 || arr[pos-1]>=arr[pos]){
+            return len;
+        }
+        return findlenleft(pos-1,arr,len+1,n);
+    }
+    public int findlenright(int pos,int[]arr,int len,int n){
+        if(pos==n-1 || arr[pos+1]>=arr[pos]){
+            return len;
+        }
+        return findlenright(pos+1,arr,len+1,n);
+    }
+}
